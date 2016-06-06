@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <meta name="theme-color" content="#5e42a6">
+  <title>Recommendation System</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css\materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css\style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <div class="navbar-fixed">
+  <nav class="blue darken-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><i class="material-icons">thumb_up</i></a>
+      <ul class="right">
+        <li><a id="login-btn" class="modal-trigger waves-effect" data-target="login-modal">Login</a></li>
+        <li><a id="profile-name" class="waves-effect" href="userPage">.</a></li>
+        <li><a id="logout"class="waves-effect" onclick='logout();'>Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+  </div>
+
+  <div class="parallax-container valign-wrapper hero">
+    <div class="container">
+      <div class="row center">
+        <h1 class="header center white-text">Recommendation System</h1>
+      </div>
+      <div class="row center">
+        <h5 class="header col s12 light"><br><br>Helps you find things that you'll love.</h5>
+      </div>
+      <div class="row center">
+        <span class="tcon-indicator" aria-label="scroll" aria-hidden="true">
+          <svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="tcon-svgchevron" viewBox="0 0 30 36">
+            <path class="a3" d="M0,0l15,16L30,0"></path>
+            <path class="a2" d="M0,10l15,16l15-16"></path>
+            <path class="a1" d="M0,20l15,16l15-16"></path>
+          </svg>
+        </span>
+      </div>
+      <div class="parallax"><img src="rsc/uwater.jpg" alt="Unsplashed background img 1"></div>
+    </div>
+    
+  </div>
+  <div class="section z-depth-5">
+    <div class="container">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text" ><a href="music.html"id="mo_i"><i class="material-icons indigo-text">library_music</i></a></h2>
+              <h5 class="center"><a href="music.html" id="mo_t">Music</a></h5>
+
+            <p class="light" align='center'>Sway to some good music.<br> We promise you'll love the tracks we have to share. :)</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><a href="movie.html" id="mu_i" class="not-active"><i class="material-icons indigo-text ">movie</i></a></h2>
+            <h5 class="center"><a href="movie.html" id="mu_t">Movies</a></h5>
+              <p class="light" align='center'>Grab some popcorn ! <br>Let's find you some movies that you'll love. </p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><a href="book.html" id="bo_i"><i class="material-icons indigo-text">book</i></a></h2>
+              <h5 class="center"><a href="book.html" id="bo_t">Books</a></h5>
+
+            <p class="light" align='center'>So we heard you like Books?<br>We have so many novels we're sure you'll love !</p>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+
+  <div class="parallax-container valign-wrapper">
+    <div class="container">
+      <div class="row center">
+        <h5 class="header col s12 light-white-text center-align"><b>Personalized Recommendations for You. </b></h5>
+      </div>
+    </div>
+    <div class="parallax"><img src="rsc/sea.jpg" alt="Unsplashed background img 2"></div>
+  </div>
+
+  <div class="section z-depth-5">
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <h4 class="center-align light">We <b>learn</b> from your preferences. </h4>
+          <p class="center-align light-blue-text"><b>Isn't that Cool ! </b></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="parallax-container valign-wrapper">
+    <div class="container">
+      <div class="row center">
+        <h5 class="header center-align white-text col s12"><a id="login-btn" class="modal-trigger waves-effect white-text" data-target="login-modal" style="text-decoration: underline;">Sign in!</a></li><br><br>Let's get started !</h5>
+      </div>
+    </div>
+    <div class="parallax"><img src="rsc/atoll.jpg" alt="Unsplashed background img 3"></div>
+  </div>
+  <div id="login-modal" class="modal">
+    <div class="modal-content">
+      <form action="loginPage" method="post">
+        <div class="row">
+            <div class="input-field col s12">
+               <i class="material-icons prefix">account_circle</i>
+               <input autocomplete="off" type="text" id="username" class="mini-form-text-input validate input-text" required name="username"/>
+               <label for="username">Username</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s12">
+               <i class="material-icons prefix">lock</i>
+               <input autocomplete="off" type="password" id="password" class="mini-form-text-input validate-password input-text required" required name="password"/>
+               <label for="password">Password</label>
+              </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <a class="blue-text center-align" href="create_account.html" style="margin-left: 24px">New? Create account</a>
+          </div>
+          <div class="input-field col s3 offset-m9 offset-s6">
+            <input type="submit" class="btn waves-effect red" value="Login">
+          </div>
+      </div>
+    </form>
+    </div>
+  </div>
+
+  <footer class="page-footer red darken-1">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12 offset-l8">
+          <h5 class="white-text">Recommendation system</h5>
+          <p class="grey-text text-lighten-4">Helps you find things that you'll love.</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="red-text text-lighten-3" href="#!">Jawahar and Shikhar</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="js/jquery-2.2.2.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/login_logout.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('.modal-trigger').leanModal({
+       dismissible: true,
+       opacity: .5,
+       in_duration: 200,
+       out_duration: 200,
+       starting_top: '10%'
+    });
+    $('.parallax').parallax();
+  });
+  </script>
+  <script>
+    !function(n,r){"function"==typeof define&&define.amd?define(r):"object"==typeof exports?module.exports=r():n.transformicons=r()}(this||window,function(){"use strict";var n={},r="tcon-transform",t={transform:["click"],revert:["click"]},e=function(n){return"string"==typeof n?Array.prototype.slice.call(document.querySelectorAll(n)):"undefined"==typeof n||n instanceof Array?n:[n]},o=function(n){return"string"==typeof n?n.toLowerCase().split(" "):n},f=function(n,r,f){var c=(f?"remove":"add")+"EventListener",u=e(n),s=u.length,a={};for(var l in t)a[l]=r&&r[l]?o(r[l]):t[l];for(;s--;)for(var d in a)for(var v=a[d].length;v--;)u[s][c](a[d][v],i)},i=function(r){n.toggle(r.currentTarget)};return n.add=function(r,t){return f(r,t),n},n.remove=function(r,t){return f(r,t,!0),n},n.transform=function(t){return e(t).forEach(function(n){n.classList.add(r)}),n},n.revert=function(t){return e(t).forEach(function(n){n.classList.remove(r)}),n},n.toggle=function(t){return e(t).forEach(function(t){n[t.classList.contains(r)?"revert":"transform"](t)}),n},n});
+  </script>
+</html>

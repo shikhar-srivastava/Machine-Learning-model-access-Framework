@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+    version="2.4">
+    <servlet>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>LoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/loginPage</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CreateServlet</servlet-name>
+        <servlet-class>CreateServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateServlet</servlet-name>
+        <url-pattern>/createPage</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>RecoServlet</servlet-name>
+        <servlet-class>RecoServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RecoServlet</servlet-name>
+        <url-pattern>/recoPage</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>SearchServlet</servlet-name>
+        <servlet-class>SearchServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchServlet</servlet-name>
+        <url-pattern>/searchPage</url-pattern>
+    </servlet-mapping>
+     <servlet>
+        <servlet-name>InsertServlet</servlet-name>
+        <servlet-class>InsertServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InsertServlet</servlet-name>
+        <url-pattern>/insertPage</url-pattern>
+    </servlet-mapping>
+     <servlet>
+        <servlet-name>ExportServlet</servlet-name>
+        <servlet-class>ExportServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ExportServlet</servlet-name>
+        <url-pattern>/exportPage</url-pattern>
+    </servlet-mapping>
+     <servlet>
+        <servlet-name>UserServlet</servlet-name>
+        <servlet-class>UserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UserServlet</servlet-name>
+        <url-pattern>/userPage</url-pattern>
+    </servlet-mapping>
+   <!-- <welcome-file-list>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>-->
+</web-app>
