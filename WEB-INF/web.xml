@@ -5,9 +5,13 @@
     xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
     version="2.4">
     <servlet>
-        <servlet-name>ExecuteModels</servlet-name>
-        <servlet-class>executeServlet</servlet-class>
+        <servlet-name>ExecuteServlet</servlet-name>
+        <servlet-class>ExecuteServlet</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>ExecuteServlet</servlet-name>
+        <url-pattern>/executePage</url-pattern>
+    </servlet-mapping>
    <!-- <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>-->
