@@ -9,7 +9,7 @@
   <link href="css\materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css\style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
-<body background="rsc/awesome.jpg" onload="test();">
+<body background="rsc/lawn.jpg" onload="test();">
   <nav class="blue darken-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo"><i class="material-icons">polymer</i></a>
     </div>
@@ -18,16 +18,16 @@
     <div class="section">
       <form id="form1" action="executePage" method="post">
         <input type="text" id="mType" name="mType" hidden/>
-        <div class="row">
+        <div class="row hoverable">
         <div class="card col s12 m12 hoverable">
           <div class="card-content">
           <!--<i class="material-icons small" style="margin-top:20px">input</i>-->
           <h4 class="center light">Input to the Model</h4>
             <div class="row">
               <div class="input-field offset-s4 col s6">
-                <input type="radio" class="with-gap" id="attr3" name="dType" value="attr3"/>
+                <input type="radio" class="with-gap" id="attr3" name="dType" value="3"/>
                 <label for="attr3">3 Attributes</label>
-                <input type="radio" class="with-gap" id="attr23" name="dType" value="attr23"/>
+                <input type="radio" class="with-gap" id="attr23" name="dType" value="23"/>
                 <label for="attr23">23 Attributes</label>
               </div>
             </div>
@@ -54,30 +54,28 @@
      <div class="col s6">
        <div class="card small hoverable">
         <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" src="images/office.jpg">
+          <img class="activator" src="rsc/ml.jpeg">
         </div>
         <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-          <p><a href="#">This is a link</a></p>
+          <span class="card-title activator grey-text text-darken-4">Input Format: DataSet 1<i class="material-icons right">more_vert</i></span>
         </div>
         <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-          <p>Here is some more information about this product that is only revealed once clicked on.</p>
+          <span class="card-title grey-text text-darken-4">DataSet 1<i class="material-icons right">close</i></span>
+          <p>This DataSet has 3 attributes,namely: <br>R (Red) , G (Green) , B(Blue) respectively and 3 classes</p>
         </div>
       </div>
      </div>
      <div class="col s6">
       <div class="card small hoverable">
         <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" src="images/office.jpg">
+          <img class="activator" src="rsc/ml.jpeg">
         </div>
         <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
-          <p><a href="#">This is a link</a></p>
+          <span class="card-title activator grey-text text-darken-4">Input Format: DataSet 2<i class="material-icons right">more_vert</i></span>
         </div>
         <div class="card-reveal ">
-          <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-          <p>Here is some more information about this product that is only revealed once clicked on.</p>
+          <span class="card-title grey-text text-darken-4">DataSet 2<i class="material-icons right">close</i></span>
+          <p>This DataSet is the Erythrocytes characterization in Anaemia detection dataset with 23 Features and 6 classes</p>
         </div>
       </div>
      </div>
