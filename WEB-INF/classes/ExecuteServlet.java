@@ -22,7 +22,7 @@ import java.io.*;
 
 public class ExecuteServlet extends HttpServlet{
 
-   protected void doPost(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException  {
+   protected void doGet(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException  {
 
 
         //------------De-Serializing the SAVED model---------------------
