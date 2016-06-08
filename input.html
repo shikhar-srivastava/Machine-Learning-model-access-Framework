@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,10 +11,22 @@
   <link href="css\style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body background="rsc/lawn.jpg" onload="test();">
+  <div class="navbar-fixed">
   <nav class="blue darken-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo"><i class="material-icons">polymer</i></a>
+    <div class="row">
+      <div class="nav-wrapper container col s12">
+      <div class="nav-wrapper container col offset-s1 s12">
+      <a id="logo-container" href="index.html" class="brand-logo"><i class="material-icons " style="font-size: 35px">polymer</i></a>
+      </div>
+       <div class="row offset-s1 col s12">
+       <div class="row offset-s1 col s12">
+          <h4 id="mTypeName"></h4>
+      </div>
+      </div>
+      </div>
     </div>
   </nav>
+  </div>  
   <div class="container blue-text text-lighten-1">
     <div class="section">
       <form id="form1" action="executePage" method="get" onsubmit="open_popup(this)">
@@ -25,9 +38,9 @@
           <h4 class="center light">Input to the Model</h4>
             <div class="row">
               <div class="input-field offset-s4 col s6">
-                <input type="radio" class="with-gap" id="attr3" name="dType" value="3"/>
+                <input autocomplete="off" type="radio" class="with-gap validate input-text" id="attr3" name="dType" value="3" required/>
                 <label for="attr3">3 Attributes</label>
-                <input type="radio" class="with-gap" id="attr23" name="dType" value="23"/>
+                <input autocomplete="off" type="radio" class="with-gap validate input-text" id="attr23" name="dType" value="23" required/>
                 <label for="attr23">23 Attributes</label>
               </div>
             </div>
@@ -51,7 +64,7 @@
   </div>
   <div class="container">
     <div class="row">
-     <div class="col s6">
+     <div class="col s6 hoverable">
        <div class="card small hoverable">
         <div class="card-image waves-effect waves-block waves-light">
           <img class="activator" src="rsc/ml.jpeg">
@@ -65,7 +78,7 @@
         </div>
       </div>
      </div>
-     <div class="col s6">
+     <div class="col s6 hoverable">
       <div class="card small hoverable">
         <div class="card-image waves-effect waves-block waves-light">
           <img class="activator" src="rsc/ml.jpeg">
@@ -107,11 +120,28 @@
   <script src="js/jquery-2.2.2.min.js"></script>
   <script src="js/materialize.min.js"></script>
   <script src="js/login_logout.js"></script>
+  <script src="js/init_content.js"></script>
   <script>
     function test() {
         var mType = window.location.toString();
         mType = mType.substring(mType.indexOf('?')+1);   //+1 or +2 CHECK
         document.getElementById('mType').value =mType;
+        var mTypeString;
+        switch(mType) {
+    case "rff":
+        mTypeString="Random Forest";
+        break;
+    case "ann":
+        mTypeString="Artifical Neural Network"
+        break;
+    case "knn":
+        mTypeString="K Nearest Neighbours"
+        break;
+    case "svm":
+        mTypeString="Support Vector Machines"
+        break;  
+                  }
+        document.getElementById('mTypeName').innerHTML = mTypeString;
         };
 </script>
   <script>
