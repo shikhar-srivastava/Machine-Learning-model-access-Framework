@@ -26,11 +26,11 @@ public class ExecuteServlet extends HttpServlet{
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)  throws ServletException, IOException  {
 
-        try {
+      try {
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();
             System.out.println("In ExecuteServlet");
-            String mType = request.getParameter("mType");
+            String mType = request.getParameter("mType");	
             String dType = request.getParameter("dType");
             String data = request.getParameter("data");
             int count;
@@ -48,6 +48,8 @@ public class ExecuteServlet extends HttpServlet{
             String doc="<!DOCTYPE html><html lang=\"en\"><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1.0\"/><title>Machine Learning for Medical Data</title><!-- CSS  --><link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\"><link href=\"css\\materialize.css\" type=\"text/css\" rel=\"stylesheet\" media=\"screen,projection\"/><link href=\"css\\style.css\" type=\"text/css\" rel=\"stylesheet\" media=\"screen,projection\"/></head><body background=\"rsc/parallax.jpg\" onload=\"test();\"><div class=\"navbar-fixed\"><nav class=\"blue darken-1\" role=\"navigation\"><div class=\"nav-wrapper container\"><a id=\"logo-container\" href=\"index.html\" class=\"brand-logo\"><i class=\"material-icons \" style=\"font-size: 30px\">polymer</i></a></div></nav></div><div class=\"container white-text text-darken-1\"><div class=\"section\"><div class=\"row hoverable\"><h4 class=\"center light\">";
             //Creating Document
             out.println(doc);
+            INDArray app= Nd4j.create(inst);
+            System.out.println("After creating test inst: " +app);
 
             if (!mType.equals("ann")) {
                 ObjectInputStream ois = new ObjectInputStream(
@@ -64,9 +66,11 @@ public class ExecuteServlet extends HttpServlet{
             	   INDArray features;
             	   if(count==3)
             	   {
-	            		System.out.println("Inside ANN Else statment");
+	            		System.out.println("Inside ANN Else statment:# 3");
 	            		double outer[]={0,0,1};
 	        			INDArray outs=Nd4j.create(outer);
+	        			out.println("Connection still working after create:");
+	        			System.out.println(outs);
 	        			INDArray tester= Nd4j.create(inst);
 	        			System.out.println("Created Labels for input");
 	        			DataSet add= new DataSet();
@@ -83,7 +87,7 @@ public class ExecuteServlet extends HttpServlet{
       				}
       				else
       				{
-      					System.out.println("Inside ANN Else statment");
+      					System.out.println("Inside ANN Else statment:# 23");
       					double outer[]={0,0,0,0,0,1};
 	        			INDArray outs=Nd4j.create(outer);
 	        			System.out.println("Created Labels for input");
@@ -136,7 +140,7 @@ public class ExecuteServlet extends HttpServlet{
             }
 
 
-        }catch(Exception e){e.printStackTrace();}
+        }catch(Exception e){System.out.println("Caught Exception!");e.printStackTrace();}
 
     }
 
