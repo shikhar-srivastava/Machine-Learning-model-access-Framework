@@ -69,33 +69,9 @@ public class ExecuteServlet extends HttpServlet{
             	  INDArray features;
             	   if(count==3)
             	   {
-  	            		System.out.println("Inside ANN Else statment:# 3");
-  	            		double outer[]={0,0,1};
-                    System.out.println("Created outer array");
-    	        			INDArray outs=Nd4j.create(outer);
-    	        			//out.println("Connection still working after create:");
-    	        			System.out.println(outs);
-    	        			INDArray tester= Nd4j.create(inst);
-    	        			System.out.println("Created Labels for input");
-    	        			DataSet add= new DataSet();
-    	        			add.setFeatures(tester);
-    	        			add.setLabels(outs);
-                    System.out.println("DataSet created and features and labels added...");
-    	        			RecordReader testSet= new CSVRecordReader();
-           					testSet.initialize(new FileSplit(new File("C:/apache-tomcat-8.0.33/webapps/MachineLearningForMedicalDataSets/models/rgb_data_3_test.csv")));
-          					DataSetIterator testIter = new RecordReaderDataSetIterator(testSet,118,0,3);
-          					DataSet test_set= testIter.next();
-                    System.out.println("DataSet recieved from file.");
-          					test_set.addRow(add,117);
-                    System.out.println("Added row to DataSet test_set");
-          					test_set.normalizeZeroMeanZeroUnitVariance();
-          					System.out.println("test_set normalized");  
-                    add=test_set.get(117);
-          					System.out.println("Normalized test_set last row gotten."); 
-                    features=add.getFeatures();
-                    System.out.println("Normalized features recieved!"); 
-                    
-      				    
+  	            		
+                    features=Nd4j.create(inst); 
+                    System.out.println("Features are: "+features);
                   }
         				else
         				{
@@ -115,6 +91,7 @@ public class ExecuteServlet extends HttpServlet{
         					test_set.normalizeZeroMeanZeroUnitVariance();
         					add=test_set.get(268);
         					features=add.getFeatures();
+                  System.out.println("Features are:"+features);
         				}
 
 

@@ -119,8 +119,25 @@
   <!--  Scripts-->
   <script src="js/jquery-2.2.2.min.js"></script>
   <script src="js/materialize.min.js"></script>
-  <script src="js/login_logout.js"></script>
-  <script src="js/init_content.js"></script>
+  <script>
+  function open_popup(form) {
+      window.open('', 'formpopup', 'width=800,height=350,resizeable,scrollbars,status=0,titlebar=0');
+      form.target = 'formpopup';
+  }
+
+  $(document).ready(function() {
+        $('.modal-trigger').leanModal({
+         dismissible: true,
+         opacity: .5,
+         in_duration: 200,
+         out_duration: 200,
+         starting_top: '10%'
+      });
+    $('.parallax').parallax();
+
+    Materialize.toast(" Enter Input for the Model ",5000);
+  });
+  </script>
   <script>
     function test() {
         var mType = window.location.toString();
