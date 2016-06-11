@@ -73,22 +73,30 @@ public class ExecuteServlet extends HttpServlet{
   	            		double outer[]={0,0,1};
                     System.out.println("Created outer array");
     	        			INDArray outs=Nd4j.create(outer);
-    	        			out.println("Connection still working after create:");
+    	        			//out.println("Connection still working after create:");
     	        			System.out.println(outs);
     	        			INDArray tester= Nd4j.create(inst);
     	        			System.out.println("Created Labels for input");
     	        			DataSet add= new DataSet();
     	        			add.setFeatures(tester);
     	        			add.setLabels(outs);
+                    System.out.println("DataSet created and features and labels added...");
     	        			RecordReader testSet= new CSVRecordReader();
-           					testSet.initialize(new FileSplit(new File("C:/apache-tomcat-8.0.33/webapps/MachineLearningForMedicalDataSets/models/Feature_test_ann.csv")));
+           					testSet.initialize(new FileSplit(new File("C:/apache-tomcat-8.0.33/webapps/MachineLearningForMedicalDataSets/models/rgb_data_3_test.csv")));
           					DataSetIterator testIter = new RecordReaderDataSetIterator(testSet,118,0,3);
           					DataSet test_set= testIter.next();
+                    System.out.println("DataSet recieved from file.");
           					test_set.addRow(add,117);
+                    System.out.println("Added row to DataSet test_set");
           					test_set.normalizeZeroMeanZeroUnitVariance();
-          					add=test_set.get(117);
-          					features=add.getFeatures();
-      				    }
+          					System.out.println("test_set normalized");  
+                    add=test_set.get(117);
+          					System.out.println("Normalized test_set last row gotten."); 
+                    features=add.getFeatures();
+                    System.out.println("Normalized features recieved!"); 
+                    
+      				    
+                  }
         				else
         				{
         					System.out.println("Inside ANN Else statment:# 23");
@@ -100,7 +108,7 @@ public class ExecuteServlet extends HttpServlet{
   	        			add.setFeatures(tester);
   	        			add.setLabels(outs);
   	        			RecordReader testSet= new CSVRecordReader();
-         					testSet.initialize(new FileSplit(new File("C:/apache-tomcat-8.0.33/webapps/MachineLearningForMedicalDataSets/models/rgb_data_3_test.csv")));
+         					testSet.initialize(new FileSplit(new File("C:/apache-tomcat-8.0.33/webapps/MachineLearningForMedicalDataSets/models/Feature_test_ann.csv")));
         					DataSetIterator testIter = new RecordReaderDataSetIterator(testSet,269,0,6);
         					DataSet test_set= testIter.next();
         					test_set.addRow(add,268);
@@ -118,25 +126,34 @@ public class ExecuteServlet extends HttpServlet{
                 MultiLayerNetwork model = new MultiLayerNetwork(confFromJson);
                 model.init();
                 model.setParams(newParams);
+                System.out.println("Model Re-created from stored .json and .bin files");
                 INDArray predicted = model.output(features,false);
+                System.out.println("Output predicted!: "+predicted);
                 int j=0;
                 int class_count;
                 if(count==3)class_count=3;
                 else class_count=6;
-                while(j<class_count)
+                out.println("The class predicted by the Model is: ");
+                int max_prob=predicted.getInt(0);
+                int max_class=0;
+                if(count==3)
                 {
-                    if(predicted.getInt(j)==1)
+                  while(j<class_count)
+                  {
+                    if(max_prob>predicted.getInt(j)){max_prob=predicted.getInt(j);max_class=j;}
+                    j++;
+                  }
+                  out.println((max_class));
+
+                }
+                else
+                {
+                    while(j<class_count)
                     {
-                        if(class_count==3) {
-                            out.println("The class predicted by the model is: " + j);break;
-                        }
-                        else
-                           {
-                           	  out.println("The class predicted by the model is: " + (j+1));
-                    		  break;
-                           }
+                      if(max_prob>predicted.getInt(j)){max_prob=predicted.getInt(j);max_class=j;}
+                      j++;
                     }
-                   j++;
+                     out.println((max_class+1));
                 }
                 //response.setContentType("text/html");
            		//out = response.getWriter();
