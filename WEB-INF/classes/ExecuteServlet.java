@@ -20,6 +20,8 @@ import org.deeplearning4j.datasets.iterator.DataSetIterator;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.nio.*;
+
 
 
 public class ExecuteServlet extends HttpServlet{
@@ -40,7 +42,7 @@ public class ExecuteServlet extends HttpServlet{
             double inst[] = new double[count];
             for (String str : data.split(","))
                 inst[i++] = Double.parseDouble(str);
-            if (i == (count - 1)) System.out.println("Input Read Successfully: i: " + i);
+            if (i == (count)) System.out.println("Input Read Successfully: i: " + i);
             for(double d:inst)System.out.println(d);
 
             //Creating New Instance here
@@ -48,8 +50,9 @@ public class ExecuteServlet extends HttpServlet{
             String doc="<!DOCTYPE html><html lang=\"en\"><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1.0\"/><title>Machine Learning for Medical Data</title><!-- CSS  --><link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\"><link href=\"css\\materialize.css\" type=\"text/css\" rel=\"stylesheet\" media=\"screen,projection\"/><link href=\"css\\style.css\" type=\"text/css\" rel=\"stylesheet\" media=\"screen,projection\"/></head><body background=\"rsc/parallax.jpg\" onload=\"test();\"><div class=\"navbar-fixed\"><nav class=\"blue darken-1\" role=\"navigation\"><div class=\"nav-wrapper container\"><a id=\"logo-container\" href=\"index.html\" class=\"brand-logo\"><i class=\"material-icons \" style=\"font-size: 30px\">polymer</i></a></div></nav></div><div class=\"container white-text text-darken-1\"><div class=\"section\"><div class=\"row hoverable\"><h4 class=\"center light\">";
             //Creating Document
             out.println(doc);
-            INDArray app= Nd4j.create(inst);
-            System.out.println("After creating test inst: " +app);
+            //System.out.println("Trying to create instance");
+            //INDArray app= Nd4j.create(inst);
+            //System.out.println("After creating test inst: " +app);
 
             if (!mType.equals("ann")) {
                 ObjectInputStream ois = new ObjectInputStream(
@@ -63,47 +66,48 @@ public class ExecuteServlet extends HttpServlet{
             else
             {
                 
-            	   INDArray features;
+            	  INDArray features;
             	   if(count==3)
             	   {
-	            		System.out.println("Inside ANN Else statment:# 3");
-	            		double outer[]={0,0,1};
-	        			INDArray outs=Nd4j.create(outer);
-	        			out.println("Connection still working after create:");
-	        			System.out.println(outs);
-	        			INDArray tester= Nd4j.create(inst);
-	        			System.out.println("Created Labels for input");
-	        			DataSet add= new DataSet();
-	        			add.setFeatures(tester);
-	        			add.setLabels(outs);
-	        			RecordReader testSet= new CSVRecordReader();
-       					testSet.initialize(new FileSplit(new File("C:/apache-tomcat-8.0.33/webapps/MachineLearningForMedicalDataSets/models/Feature_test_ann.csv")));
-      					DataSetIterator testIter = new RecordReaderDataSetIterator(testSet,118,0,3);
-      					DataSet test_set= testIter.next();
-      					test_set.addRow(add,117);
-      					test_set.normalizeZeroMeanZeroUnitVariance();
-      					add=test_set.get(117);
-      					features=add.getFeatures();
-      				}
-      				else
-      				{
-      					System.out.println("Inside ANN Else statment:# 23");
-      					double outer[]={0,0,0,0,0,1};
-	        			INDArray outs=Nd4j.create(outer);
-	        			System.out.println("Created Labels for input");
-	        			INDArray tester= Nd4j.create(inst);
-	        			DataSet add= new DataSet();
-	        			add.setFeatures(tester);
-	        			add.setLabels(outs);
-	        			RecordReader testSet= new CSVRecordReader();
-       					testSet.initialize(new FileSplit(new File("C:/apache-tomcat-8.0.33/webapps/MachineLearningForMedicalDataSets/models/rgb_data_3_test.csv")));
-      					DataSetIterator testIter = new RecordReaderDataSetIterator(testSet,269,0,6);
-      					DataSet test_set= testIter.next();
-      					test_set.addRow(add,268);
-      					test_set.normalizeZeroMeanZeroUnitVariance();
-      					add=test_set.get(268);
-      					features=add.getFeatures();
-      				}
+  	            		System.out.println("Inside ANN Else statment:# 3");
+  	            		double outer[]={0,0,1};
+                    System.out.println("Created outer array");
+    	        			INDArray outs=Nd4j.create(outer);
+    	        			out.println("Connection still working after create:");
+    	        			System.out.println(outs);
+    	        			INDArray tester= Nd4j.create(inst);
+    	        			System.out.println("Created Labels for input");
+    	        			DataSet add= new DataSet();
+    	        			add.setFeatures(tester);
+    	        			add.setLabels(outs);
+    	        			RecordReader testSet= new CSVRecordReader();
+           					testSet.initialize(new FileSplit(new File("C:/apache-tomcat-8.0.33/webapps/MachineLearningForMedicalDataSets/models/Feature_test_ann.csv")));
+          					DataSetIterator testIter = new RecordReaderDataSetIterator(testSet,118,0,3);
+          					DataSet test_set= testIter.next();
+          					test_set.addRow(add,117);
+          					test_set.normalizeZeroMeanZeroUnitVariance();
+          					add=test_set.get(117);
+          					features=add.getFeatures();
+      				    }
+        				else
+        				{
+        					System.out.println("Inside ANN Else statment:# 23");
+        					double outer[]={0,0,0,0,0,1};
+  	        			INDArray outs=Nd4j.create(outer);
+  	        			System.out.println("Created Labels for input");
+  	        			INDArray tester= Nd4j.create(inst);
+  	        			DataSet add= new DataSet();
+  	        			add.setFeatures(tester);
+  	        			add.setLabels(outs);
+  	        			RecordReader testSet= new CSVRecordReader();
+         					testSet.initialize(new FileSplit(new File("C:/apache-tomcat-8.0.33/webapps/MachineLearningForMedicalDataSets/models/rgb_data_3_test.csv")));
+        					DataSetIterator testIter = new RecordReaderDataSetIterator(testSet,269,0,6);
+        					DataSet test_set= testIter.next();
+        					test_set.addRow(add,268);
+        					test_set.normalizeZeroMeanZeroUnitVariance();
+        					add=test_set.get(268);
+        					features=add.getFeatures();
+        				}
 
 
 
@@ -136,9 +140,9 @@ public class ExecuteServlet extends HttpServlet{
                 }
                 //response.setContentType("text/html");
            		//out = response.getWriter();
-                out.println("</h4>");
             }
 
+           out.println("</h4>");
 
         }catch(Exception e){System.out.println("Caught Exception!");e.printStackTrace();}
 
