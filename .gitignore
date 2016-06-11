@@ -1,2 +1,3 @@
 jars/deeplearning4j-examples-0.4-rc0-SNAPSHOT.jar
 jars/deeplearning4j-examples-0.4-rc0-SNAPSHOT-bin.jar
+*.jar
