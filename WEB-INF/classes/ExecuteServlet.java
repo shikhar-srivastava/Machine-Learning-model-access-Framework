@@ -111,13 +111,13 @@ public class ExecuteServlet extends HttpServlet{
                 if(count==3)class_count=3;
                 else class_count=6;
                 out.println("The class predicted by the Model is: ");
-                int max_prob=predicted.getInt(0);
+                double max_prob=predicted.getDouble(0);
                 int max_class=0;
                 if(count==3)
                 {
                   while(j<class_count)
                   {
-                    if(max_prob>predicted.getInt(j)){max_prob=predicted.getInt(j);max_class=j;}
+                    if(max_prob<predicted.getDouble(j)){max_prob=predicted.getDouble(j);max_class=j;}
                     j++;
                   }
                   out.println((max_class));
@@ -127,7 +127,7 @@ public class ExecuteServlet extends HttpServlet{
                 {
                     while(j<class_count)
                     {
-                      if(max_prob>predicted.getInt(j)){max_prob=predicted.getInt(j);max_class=j;}
+                      if(max_prob<predicted.getDouble(j)){max_prob=predicted.getDouble(j);max_class=j;}
                       j++;
                     }
                      out.println((max_class+1));
