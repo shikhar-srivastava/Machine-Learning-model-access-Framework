@@ -117,7 +117,7 @@ public class ExecuteServlet extends HttpServlet{
                 {
                   while(j<class_count)
                   {
-                    if(max_prob>predicted.getInt(j)){max_prob=predicted.getInt(j);max_class=j;}
+                    if(max_prob<predicted.getInt(j)){max_prob=predicted.getInt(j);max_class=j;}
                     j++;
                   }
                   out.println((max_class));
@@ -127,7 +127,7 @@ public class ExecuteServlet extends HttpServlet{
                 {
                     while(j<class_count)
                     {
-                      if(max_prob>predicted.getInt(j)){max_prob=predicted.getInt(j);max_class=j;}
+                      if(max_prob<predicted.getInt(j)){max_prob=predicted.getInt(j);max_class=j;}
                       j++;
                     }
                      out.println((max_class+1));
